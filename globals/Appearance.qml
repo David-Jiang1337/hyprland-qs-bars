@@ -7,6 +7,7 @@ Singleton {
     id: root
 
     readonly property Font font: Font{}
+    readonly property Palette palette: Palette{}
 
     component FontSize: QtObject {
         readonly property int small: 12

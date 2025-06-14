@@ -27,6 +27,9 @@ Scope {
                     id: clock
                     anchors.centerIn: parent
 
+                    font.family: Appearance.font.family.mono
+                    font.pointSize: Appearance.font.size.medium
+
                     Process {
                         id: dateProc
                         
