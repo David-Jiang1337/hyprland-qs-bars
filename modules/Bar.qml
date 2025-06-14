@@ -11,12 +11,16 @@ Scope {
         model: Quickshell.screens
         delegate: Component{
             PanelWindow {
+                property var modelData
+
+                screen: modelData
+
                 anchors {
                     top: true
                     left: true
                     bottom: true
                 }
-                implicitWidth: 50
+                implicitWidth: 60
 
                 Text {
                     id: clock
@@ -25,7 +29,7 @@ Scope {
                     Process {
                         id: dateProc
                         
-                        command: ["date"]
+                        command: ["date","+%H%n%M"]
                         running: true
                         stdout: StdioCollector {
                             onStreamFinished: clock.text = this.text
