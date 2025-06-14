@@ -5,19 +5,43 @@ import QtQuick
 Scope {
     id: root
 
-    PanelWindow {
-        anchors {
-            top: true
-            left: true
-            bottom: true
-        }
-        implicitWidth: 50
+    property string time
 
-        Text {
-            anchors.centerIn: parent
-            text: "hello world"
-            rotation: -90
+    Variants {
+        model: Quickshell.screens
+        delegate: Component{
+            PanelWindow {
+                anchors {
+                    top: true
+                    left: true
+                    bottom: true
+                }
+                implicitWidth: 50
+
+                Text {
+                    id: clock
+                    anchors.centerIn: parent
+
+                    Process {
+                        id: dateProc
+                        
+                        command: ["date"]
+                        running: true
+                        stdout: StdioCollector {
+                            onStreamFinished: clock.text = this.text
+                        }
+                    }
+
+                    Timer {
+                        interval: 1000
+                        running: true
+                        repeat: true
+                        onTriggered: dateProc.running = true
+                    }
+                }
+            }
         }
+        
     }
 }    
 
