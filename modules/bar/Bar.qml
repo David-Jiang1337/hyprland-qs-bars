@@ -2,6 +2,7 @@ import Quickshell
 import Quickshell.Io
 import QtQuick
 import "widgets"
+import "root:/globals"
 
 Scope {
     id: root
@@ -21,6 +22,13 @@ Scope {
                     left: true
                     bottom: true
                 }
+
+                margins {
+                    top: Appearance.padding.medium
+                    left: Appearance.padding.medium
+                    bottom: Appearance.padding.medium
+                }
+
                 implicitWidth: 80
 
                 // widgets
