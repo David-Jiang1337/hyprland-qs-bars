@@ -6,8 +6,9 @@ import QtQuick
 Singleton {
     id: root
 
-    readonly property Font font: Font{}
-    readonly property Palette palette: Palette{}
+    readonly property Font font: Font {}
+    readonly property Palette palette: Palette {}
+    readonly property Padding padding: Padding {}
 
     component FontSize: QtObject {
         readonly property int small: 12
@@ -24,6 +25,12 @@ Singleton {
     component Font: QtObject {
         readonly property FontFamily family: FontFamily {}
         readonly property FontSize size: FontSize {}
+    }
+
+    component Padding: QtObject {
+        readonly property int small: 12
+        readonly property int medium: 16
+        readonly property int large: 20
     }
     
 }

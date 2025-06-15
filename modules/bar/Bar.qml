@@ -21,13 +21,13 @@ Scope {
                     left: true
                     bottom: true
                 }
-                implicitWidth: 60
+                implicitWidth: 80
 
                 Text {
                     id: clock
                     anchors.centerIn: parent
 
-                    font.family: Appearance.font.family.mono
+                    font.family: Appearance.font.family.sans
                     font.pointSize: Appearance.font.size.medium
 
                     Process {

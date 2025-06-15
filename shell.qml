@@ -1,6 +1,7 @@
-import Quickshell
 import "modules"
+import "modules/bar"
+import Quickshell
 
-Scope {
-    Bar{}
+ShellRoot {
+    Bar {}
 }
