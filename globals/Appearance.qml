@@ -12,6 +12,7 @@ Singleton {
     readonly property Spacing spacing: Spacing {}
     readonly property Radius radius: Radius {}
     readonly property Duration duration: Duration {}
+    readonly property Animations animations: Animations {}
 
     component FontSize: QtObject {
         readonly property int small: 12
@@ -61,6 +62,12 @@ Singleton {
         readonly property int medium: 200
         readonly property int large: 300
         readonly property int extraLarge: 600
+    }
+
+    component Animations: QtObject {
+        readonly property ColorAnimation colorAnimation: ColorAnimation {
+            properties: "color"; easing.type: Easing.InOutQuad ; duration: Appearance.duration.small
+        }
     }
 
     
