@@ -11,7 +11,7 @@ Scope {
 
     Variants {
         model: Quickshell.screens
-        delegate: Component{
+        Component{
             PanelWindow {
                 id: wrapper
                 property int padding: Appearance.padding.medium
@@ -31,7 +31,8 @@ Scope {
                     id: child
 
                     implicitWidth: 80
-                    radius: 10
+                    radius: Appearance.radius.medium
+                    color: Appearance.palette.background1
 
                     anchors {
                         top: parent.top

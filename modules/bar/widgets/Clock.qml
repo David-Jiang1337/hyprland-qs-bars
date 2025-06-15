@@ -7,6 +7,7 @@ Text {
     id: clock
     anchors.centerIn: parent
 
+    color: Appearance.palette.foreground1
     font.family: Appearance.font.family.sans
     font.pointSize: Appearance.font.size.medium
 
