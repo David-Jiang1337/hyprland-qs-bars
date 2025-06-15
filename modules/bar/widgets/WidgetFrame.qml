@@ -8,6 +8,7 @@ Frame {
     anchors {
         right: parent.right
         left: parent.left
+        topMargin: Appearance.spacing.small
         bottomMargin: Appearance.spacing.small
         rightMargin: Appearance.spacing.small
         leftMargin: Appearance.spacing.small

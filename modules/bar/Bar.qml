@@ -1,7 +1,7 @@
 import Quickshell
 import Quickshell.Io
 import QtQuick
-import "widgets"
+import "root:/modules/bar/widgets"
 import "root:/globals"
 import "root:/elements"
 
@@ -46,6 +46,14 @@ Scope {
                     }
 
                     // widgets
+                    WidgetFrame {
+                        // anchors.top: parent.top
+                        // height: 50
+                        // Workspace {
+                        //     id: workspace1
+                        // }
+                    }
+
                     WidgetFrame { // Clock widget
                         anchors.bottom: parent.bottom
                         height: clock.implicitHeight + Appearance.padding.tiny*2
