@@ -42,8 +42,8 @@ Singleton {
     }
 
     component Palette: QtObject {
-        readonly property color background1: "#ffffff"
-        readonly property color foreground1: "#000000"
+        readonly property color background1: "#0a0e12"
+        readonly property color foreground1: "#e1c8b1"
     }
     
 }
