@@ -13,6 +13,10 @@ Scope {
         model: Quickshell.screens
         delegate: Component{
             PanelWindow {
+                id: wrapper
+                property int padding: Appearance.padding.medium
+
+                color: "transparent"
                 property var modelData
 
                 screen: modelData
@@ -23,17 +27,31 @@ Scope {
                     bottom: true
                 }
 
-                margins {
-                    top: Appearance.padding.medium
-                    left: Appearance.padding.medium
-                    bottom: Appearance.padding.medium
+                Rectangle {
+                    id: child
+
+                    implicitWidth: 80
+                    radius: 10
+
+                    anchors {
+                        top: parent.top
+                        left: parent.left
+                        bottom: parent.bottom
+
+                        topMargin: wrapper.padding
+                        leftMargin: wrapper.padding
+                        bottomMargin: wrapper.padding
+                    }
+
+
+                    Clock {}
                 }
 
-                implicitWidth: 80
+                implicitWidth: child.implicitWidth + padding
 
                 // widgets
 
-                Clock {}
+                
             }
         }
         
