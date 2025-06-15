@@ -1,7 +1,7 @@
 import Quickshell
 import Quickshell.Io
 import QtQuick
-import "root:/globals"
+import "widgets"
 
 Scope {
     id: root
@@ -23,30 +23,9 @@ Scope {
                 }
                 implicitWidth: 80
 
-                Text {
-                    id: clock
-                    anchors.centerIn: parent
+                // widgets
 
-                    font.family: Appearance.font.family.sans
-                    font.pointSize: Appearance.font.size.medium
-
-                    Process {
-                        id: dateProc
-                        
-                        command: ["date","+%H%n%M"]
-                        running: true
-                        stdout: StdioCollector {
-                            onStreamFinished: clock.text = this.text
-                        }
-                    }
-
-                    Timer {
-                        interval: 1000
-                        running: true
-                        repeat: true
-                        onTriggered: dateProc.running = true
-                    }
-                }
+                Clock {}
             }
         }
         
