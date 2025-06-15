@@ -13,4 +13,11 @@ Rectangle {
             duration: Appearance.duration.small
         }
     }
+
+    Behavior on width {
+        ScaleAnimator {
+            easing.type: Easing.InOutQuad
+            duration: Appearance.duration.small
+        }
+    }
 }
