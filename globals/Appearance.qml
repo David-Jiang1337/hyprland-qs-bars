@@ -9,6 +9,7 @@ Singleton {
     readonly property Font font: Font {}
     readonly property Palette palette: Palette {}
     readonly property Padding padding: Padding {}
+    readonly property Sizing sizing: Sizing {}
     readonly property Spacing spacing: Spacing {}
     readonly property Radius radius: Radius {}
     readonly property Duration duration: Duration {}
@@ -29,6 +30,10 @@ Singleton {
     component Font: QtObject {
         readonly property FontFamily family: FontFamily {}
         readonly property FontSize size: FontSize {}
+    }
+
+    component Sizing: QtObject {
+        readonly property int roundObject: 20
     }
 
     component Padding: QtObject {
