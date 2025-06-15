@@ -4,15 +4,72 @@ import QtQuick
 import "root:/services"
 import "root:/globals"
 
-Text {
-    id: clock
-    anchors.centerIn: parent
-    text: Time.format("󰃭\nhh\nmm")
+Rectangle {
+    id: root
+    anchors {
+        bottom: parent.bottom
+        right: parent.right
+        left: parent.left
+        bottomMargin: Appearance.spacing.small
+        rightMargin: Appearance.spacing.small
+        leftMargin: Appearance.spacing.small
+        
+    }
+    width: parent.width - Appearance.padding.small * 2
+    height: clock.height + Appearance.padding.small
+    radius: Appearance.radius.small
+    color: Appearance.palette.background1
 
-    horizontalAlignment: Text.AlignHCenter
-    color: Appearance.palette.foreground1
-    font.family: Appearance.font.family.sans
-    font.pointSize: Appearance.font.size.medium
+    Text {
+        id: clock
+        anchors.centerIn: parent
+
+        textFormat: Text.RichText
+        text: "<div style = 'font-family: Symbols Nerd Font'>󰃭</div><br>" + Time.format('hh<br>mm')
+
+        horizontalAlignment: Text.AlignHCenter
+        color: Appearance.palette.foreground1
+        font.family: Appearance.font.family.sans
+        font.pointSize: Appearance.font.size.medium
+    }
+
+    MouseArea {
+        id: mouseArea
+        anchors.fill: root
+        hoverEnabled: true
+    }
+
+    states: [
+        State {
+            name: "unhovered"
+            when: !mouseArea.containsMouse
+            PropertyChanges {
+                target: root
+                color: Appearance.palette.background1
+            }
+            PropertyChanges {
+                target: clock
+                color: Appearance.palette.foreground1
+            }
+        },
+        State {
+            name: "hovered"
+            when: mouseArea.containsMouse
+            PropertyChanges {
+                target: root
+                color: Appearance.palette.foreground1
+            }
+            PropertyChanges {
+                target: clock
+                color: Appearance.palette.background1
+            }
+        }
+    ]
+
+    transitions: Transition {
+        ColorAnimation { properties: "color"; easing.type: Easing.InOutQuad ; duration: Appearance.duration.small }
+    }
 }
+
 
     
