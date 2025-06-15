@@ -7,24 +7,14 @@ import "root:/elements"
 
 Frame {
     id: root
-    anchors {
-        bottom: parent.bottom
-        right: parent.right
-        left: parent.left
-        bottomMargin: Appearance.spacing.small
-        rightMargin: Appearance.spacing.small
-        leftMargin: Appearance.spacing.small
-        
-    }
-    width: parent.width - Appearance.padding.small * 2
-    height: clock.height + Appearance.padding.small
+    anchors.fill: parent
+    implicitHeight: clock.height
     radius: Appearance.radius.small
     color: Appearance.palette.background1
 
-    Text {
+    TextLabel {
         id: clock
         anchors.centerIn: parent
-
         textFormat: Text.RichText
         text: "<div style = 'font-family: Symbols Nerd Font'></div><br>" + Time.format('hh<br>mm')
 

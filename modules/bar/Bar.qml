@@ -3,6 +3,7 @@ import Quickshell.Io
 import QtQuick
 import "widgets"
 import "root:/globals"
+import "root:/elements"
 
 Scope {
     id: root
@@ -45,7 +46,23 @@ Scope {
                     }
 
                     // widgets
-                    Clock {}
+                    Frame { // Clock widget
+                        anchors {
+                            bottom: parent.bottom
+                            right: parent.right
+                            left: parent.left
+                            bottomMargin: Appearance.spacing.small
+                            rightMargin: Appearance.spacing.small
+                            leftMargin: Appearance.spacing.small
+                        }
+                        width: parent.width - Appearance.padding.small * 2
+                        height: clock.implicitHeight + Appearance.padding.tiny*2
+
+                        Clock {
+                            id: clock
+                        }
+                    }
+                    
                 }
 
                 implicitWidth: child.implicitWidth + padding
