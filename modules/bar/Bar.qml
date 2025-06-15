@@ -46,16 +46,8 @@ Scope {
                     }
 
                     // widgets
-                    Frame { // Clock widget
-                        anchors {
-                            bottom: parent.bottom
-                            right: parent.right
-                            left: parent.left
-                            bottomMargin: Appearance.spacing.small
-                            rightMargin: Appearance.spacing.small
-                            leftMargin: Appearance.spacing.small
-                        }
-                        width: parent.width - Appearance.padding.small * 2
+                    WidgetFrame { // Clock widget
+                        anchors.bottom: parent.bottom
                         height: clock.implicitHeight + Appearance.padding.tiny*2
 
                         Clock {
