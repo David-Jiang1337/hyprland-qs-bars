@@ -3,8 +3,9 @@ import Quickshell.Io
 import QtQuick
 import "root:/services"
 import "root:/globals"
+import "root:/elements"
 
-Rectangle {
+Frame {
     id: root
     anchors {
         bottom: parent.bottom
@@ -25,7 +26,7 @@ Rectangle {
         anchors.centerIn: parent
 
         textFormat: Text.RichText
-        text: "<div style = 'font-family: Symbols Nerd Font'>󰃭</div><br>" + Time.format('hh<br>mm')
+        text: "<div style = 'font-family: Symbols Nerd Font'></div><br>" + Time.format('hh<br>mm')
 
         horizontalAlignment: Text.AlignHCenter
         color: Appearance.palette.foreground1
@@ -65,10 +66,6 @@ Rectangle {
             }
         }
     ]
-
-    transitions: Transition {
-        ColorAnimation { properties: "color"; easing.type: Easing.InOutQuad ; duration: Appearance.duration.small }
-    }
 }
 
 

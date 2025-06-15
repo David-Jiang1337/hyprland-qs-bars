@@ -44,13 +44,13 @@ Scope {
                         bottomMargin: wrapper.padding
                     }
 
-
+                    // widgets
                     Clock {}
                 }
 
                 implicitWidth: child.implicitWidth + padding
 
-                // widgets
+                
 
                 
             }
