@@ -32,6 +32,7 @@ Singleton {
     }
 
     component Padding: QtObject {
+        readonly property int tiny: 8
         readonly property int small: 16
         readonly property int medium: 20
         readonly property int large: 24
@@ -54,6 +55,7 @@ Singleton {
     component Palette: QtObject {
         readonly property color background1: "#0a0e12"
         readonly property color foreground1: "#e1c8b1"
+        readonly property color foreground2: "#8b452e"
     }
 
     component Duration: QtObject {
@@ -66,7 +68,7 @@ Singleton {
 
     component Animations: QtObject {
         readonly property ColorAnimation colorAnimation: ColorAnimation {
-            properties: "color"; easing.type: Easing.InOutQuad ; duration: Appearance.duration.small
+            properties: "color"; easing.type: Easing.InOutQuad ; duration: 2000
         }
     }
 
