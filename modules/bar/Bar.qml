@@ -21,7 +21,7 @@ Item {
         }
 
         Frame {
-            id: child
+            id: barFrame
 
             implicitWidth: 80
             radius: Appearance.radius.medium
@@ -60,7 +60,7 @@ Item {
 
             WidgetColumnLayout {
                 id: lowerWidgets
-                spacing: Appearance.spacing.tiny
+                spacing: Appearance.spacing.small
                 anchors {
                     bottom: parent.bottom
                     bottomMargin: Appearance.spacing.small
@@ -68,29 +68,40 @@ Item {
 
                 WidgetFrame { // Clock widget
                     id: clockFrame
-                    implicitHeight: clock.implicitHeight + Appearance.padding.small*2
+                    implicitHeight: clock.implicitHeight
 
                     Clock {
                         id: clock
                     }
                 }
 
-                WidgetFrame {
+                Frame {
+                    readonly property int traySpacing: Appearance.spacing.small
+
                     id: soundFrame
-                    implicitHeight: soundColumn.implicitHeight + Appearance.padding.large*2
+                    implicitWidth: barFrame.width - Appearance.padding.small * 2
+                    implicitHeight: columnTray.childrenRect.height + traySpacing * 2
                     color: Appearance.palette.background2
                     radius: Appearance.radius.full
+
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.rightMargin: Appearance.spacing.small
+                    Layout.leftMargin: Appearance.spacing.small
                     
                     ColumnLayout {
-                        id: soundColumn
-                        spacing: Appearance.spacing.small
+                        id: columnTray
+                        spacing: parent.traySpacing
                         anchors.centerIn: parent
-                        Sound {
+
+                        WidgetFrame {
+                            implicitWidth: sound.implicitHeight
+                            implicitHeight: implicitWidth
+                            Sound {
+                                id: sound
+                            }
+
                         }
-                        Sound {
-                        }
-                        Sound {
-                        }
+
                     }
                 }
 
@@ -103,14 +114,10 @@ Item {
                 
 
             }
-
-            
-
-            
             
         }
 
-        implicitWidth: child.implicitWidth + padding
+        implicitWidth: barFrame.implicitWidth + padding
 
         
     }
