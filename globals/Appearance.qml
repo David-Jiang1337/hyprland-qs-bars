@@ -41,6 +41,7 @@ Singleton {
         readonly property int small: 16
         readonly property int medium: 20
         readonly property int large: 24
+        readonly property int extraLarge: 48
     }
 
     component Spacing: QtObject {
@@ -59,9 +60,10 @@ Singleton {
 
     component Palette: QtObject {
         readonly property color background1: "#0a0e12"
-        readonly property color backgroundInvert1: "#9d8c7b"
+        readonly property color background2: "#1b1f24"
+        readonly property color foreground0: "#ffffff"
         readonly property color foreground1: "#e1c8b1"
-        readonly property color foreground2: "#8b452e"
+        readonly property color foreground2: "#c68654"
     }
 
     component Duration: QtObject {
