@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import "root:/globals"
 
 ColumnLayout {
-    implicitHeight: childrenRect.height + Appearance.padding.medium*2
+    spacing: Appearance.spacing.tiny
     anchors {
         left: parent.left
         right: parent.right
