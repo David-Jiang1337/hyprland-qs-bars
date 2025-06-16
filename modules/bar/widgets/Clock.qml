@@ -9,8 +9,6 @@ Frame {
     id: root
     anchors.fill: parent
     implicitHeight: clock.height
-    radius: Appearance.radius.full
-    color: Appearance.palette.background1
 
     TextLabel {
         id: clock
@@ -20,39 +18,21 @@ Frame {
         font.family: Appearance.font.family.sans
         font.pointSize: Appearance.font.size.medium
     }
-
+    
     MouseArea {
         id: mouseArea
         anchors.fill: root
         hoverEnabled: true
+        onEntered: (mouse) => {
+            clock.color = Appearance.palette.foreground2;
+        }
+
+        onExited: (mouse) => {
+            clock.color = Appearance.palette.foreground1;
+        }
     }
 
-    states: [
-        State {
-            name: "unhovered"
-            when: !mouseArea.containsMouse
-            PropertyChanges {
-                target: root
-                color: Appearance.palette.background1
-            }
-            PropertyChanges {
-                target: clock
-                color: Appearance.palette.foreground1
-            }
-        },
-        State {
-            name: "hovered"
-            when: mouseArea.containsMouse
-            PropertyChanges {
-                target: root
-                color: Appearance.palette.foreground1
-            }
-            PropertyChanges {
-                target: clock
-                color: Appearance.palette.background1
-            }
-        }
-    ]
+    
 }
 
 
