@@ -1,15 +1,14 @@
 import Quickshell
 import QtQuick
+import QtQuick
+import QtQuick.Layouts
 import "root:/globals"
 import "root:/elements"
 
 Frame {
     id: root
-    anchors {
-        right: parent.right
-        left: parent.left
-        rightMargin: Appearance.spacing.small
-        leftMargin: Appearance.spacing.small
-    }
+    Layout.alignment: Qt.AlignHCenter
+    Layout.rightMargin: Appearance.spacing.small
+    Layout.leftMargin: Appearance.spacing.small
     width: parent.width - Appearance.padding.small * 2
 }
