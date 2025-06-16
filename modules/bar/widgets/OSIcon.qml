@@ -23,33 +23,15 @@ Frame {
         id: mouseArea
         anchors.fill: root
         hoverEnabled: true
-    }
-
-    states: [
-        State {
-            name: "unhovered"
-            when: !mouseArea.containsMouse
-            PropertyChanges {
-                target: root
-                color: Appearance.palette.background1
-            }
-            PropertyChanges {
-                target: os
-                color: Appearance.palette.foreground1
-            }
-        },
-        State {
-            name: "hovered"
-            when: mouseArea.containsMouse
-            PropertyChanges {
-                target: root
-                color: Appearance.palette.foreground1
-            }
-            PropertyChanges {
-                target: os
-                color: Appearance.palette.background1
-            }
+        onEntered: (mouse) => {
+            root.color = Appearance.palette.foreground1;
+            os.color = Appearance.palette.background1;
         }
-    ]
+
+        onExited: (mouse) => {
+            root.color = Appearance.palette.background1;
+            os.color = Appearance.palette.foreground1;
+        }
+    }
 
 }
