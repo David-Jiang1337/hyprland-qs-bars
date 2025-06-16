@@ -21,10 +21,15 @@ Frame {
     }
 
     function formatIconFromVolume(): string {
-        if (Audio.getVolume() == 0) {
-            return ""
+        var volume = Audio.getVolume();
+        if (Audio.muted) {
+            return "";
+        } else if (volume < 0.3) {
+            return "";
+        } else if (volume < 0.6) {
+            return "";
         } else {
-            return ""
+            return "";
         }
     }
 
