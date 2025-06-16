@@ -21,7 +21,7 @@ Item {
             bottom: true
         }
 
-        Rectangle {
+        Frame {
             id: child
 
             implicitWidth: 80
@@ -36,6 +36,15 @@ Item {
                 topMargin: wrapper.padding
                 leftMargin: wrapper.padding
                 bottomMargin: wrapper.padding
+            }
+
+            WidgetFrame {
+                id: osFrame
+                anchors.top: parent.top
+                implicitHeight: width
+                OSIcon {
+                    id: osIcon
+                }
             }
 
             WidgetFrame {
