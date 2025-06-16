@@ -66,6 +66,15 @@ Item {
                     bottomMargin: Appearance.spacing.small
                 }
 
+                WidgetFrame { // Clock widget
+                    id: clockFrame
+                    implicitHeight: clock.implicitHeight + Appearance.padding.small*2
+
+                    Clock {
+                        id: clock
+                    }
+                }
+
                 WidgetFrame {
                     id: soundFrame
                     implicitHeight: soundColumn.implicitHeight + Appearance.padding.large*2
@@ -85,14 +94,13 @@ Item {
                     }
                 }
 
-                WidgetFrame { // Clock widget
-                    id: clockFrame
-                    implicitHeight: clock.implicitHeight + Appearance.padding.small*2
-
-                    Clock {
-                        id: clock
+                WidgetFrame {
+                    implicitHeight: width
+                    Power {
+                        id: power
                     }
                 }
+                
 
             }
 
