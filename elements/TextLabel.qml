@@ -4,6 +4,8 @@ import "root:/globals"
 
 Text {
     id: root
+    anchors.centerIn: parent
+    horizontalAlignment: Text.AlignHCenter
     color: Appearance.palette.foreground1
 
     Behavior on color {
