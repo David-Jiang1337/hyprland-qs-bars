@@ -13,7 +13,6 @@ Item {
         property int padding: Appearance.padding.medium
 
         color: "transparent"
-        property var modelData
 
         anchors {
             top: true
@@ -38,57 +37,72 @@ Item {
                 bottomMargin: wrapper.padding
             }
 
-            WidgetFrame {
+            WidgetColumnLayout {
+                id: upperWidgets
+                anchors {
+                    top: parent.top
+                    topMargin: Appearance.spacing.small
+                }
+
+                WidgetFrame {
                 id: osFrame
-                anchors.top: parent.top
                 implicitHeight: width
                 OSIcon {
                     id: osIcon
                 }
             }
-
-            WidgetFrame {
-                id: soundFrame
-                implicitHeight: soundColumn.implicitHeight + Appearance.padding.large*2
-                anchors{
-                    bottom: clockFrame.top
-                    rightMargin: Appearance.spacing.small
-                    leftMargin: Appearance.spacing.small
-                }
-                color: Appearance.palette.background2
-                radius: Appearance.radius.full
-                
-                ColumnLayout {
-                    id: soundColumn
-                    spacing: Appearance.spacing.small
-                    anchors.centerIn: parent
-                    Sound {
-                        id: sound
-                    }
-                    Sound {
-                        id: sound2
-                    }
-                    Sound {
-                        id: sound3
-                    }
-                }
             }
 
-            WidgetFrame { // Clock widget
-                id: clockFrame
-                anchors.bottom: parent.bottom
-                implicitHeight: clock.implicitHeight + Appearance.padding.small*2
-
-                Clock {
-                    id: clock
-                }
+            WidgetColumnLayout {
+                id: middleWidgets
+                anchors.centerIn: parent
             }
+
+            WidgetColumnLayout {
+                id: lowerWidgets
+                spacing: Appearance.spacing.tiny
+                anchors {
+                    bottom: parent.bottom
+                    bottomMargin: Appearance.spacing.small
+                }
+
+                WidgetFrame {
+                    id: soundFrame
+                    implicitHeight: soundColumn.implicitHeight + Appearance.padding.large*2
+                    color: Appearance.palette.background2
+                    radius: Appearance.radius.full
+                    
+                    ColumnLayout {
+                        id: soundColumn
+                        spacing: Appearance.spacing.small
+                        anchors.centerIn: parent
+                        Sound {
+                        }
+                        Sound {
+                        }
+                        Sound {
+                        }
+                    }
+                }
+
+                WidgetFrame { // Clock widget
+                    id: clockFrame
+                    implicitHeight: clock.implicitHeight + Appearance.padding.small*2
+
+                    Clock {
+                        id: clock
+                    }
+                }
+
+            }
+
+            
+
+            
             
         }
 
         implicitWidth: child.implicitWidth + padding
-
-        
 
         
     }
