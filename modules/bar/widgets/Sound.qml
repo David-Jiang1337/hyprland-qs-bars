@@ -33,4 +33,17 @@ Frame {
         }
     }
 
+    MouseArea {
+        id: mouseArea
+        anchors.fill: root
+        hoverEnabled: true
+        onEntered: (mouse) => {
+            sound.color = Appearance.palette.foreground2;
+        }
+
+        onExited: (mouse) => {
+            sound.color = Appearance.palette.foreground1;
+        }
+    }
+
 }
