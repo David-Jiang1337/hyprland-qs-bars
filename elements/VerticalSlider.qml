@@ -1,10 +1,14 @@
 import Quickshell
 import QtQuick
 import "root:/globals"
+import "root:/services"
 
 Frame {
     id: root
     property real value: 0
+    property var updateValue: (mouseY) => {
+        value = getValueAtY(mouseY);
+    }
 
     Frame {
         id: sliderBackground
@@ -12,9 +16,9 @@ Frame {
         anchors {
             bottom: parent.bottom
         }
-        width: parent.width
-        height: parent.height
-        radius: Appearance.sizing.sliderRounding
+        implicitWidth: parent.implicitWidth
+        implicitHeight: parent.implicitHeight
+        radius: Appearance.radius.full
     }
 
     Frame {
@@ -23,24 +27,19 @@ Frame {
         anchors {
             bottom: parent.bottom
         }
-        width: parent.width
-        height: parent.height * value
-        radius: Appearance.sizing.sliderRounding
+        implicitWidth: parent.implicitWidth
+        implicitHeight: parent.implicitHeight * value
+        radius: Appearance.radius.full
     }
     
     MouseArea {
         id: mouseArea
         anchors.fill: root
         onPositionChanged: updateValue(mouseY)
+        onPressed: updateValue(mouseY)
     }
-
-    function updateValue(y) {
-        if (y <= 0) {
-            value = 0;
-        } else if (y > root.height) {
-            value = 1;
-        } else {
-            value = (y - root.height)/root.height;
-        }
+    
+    function getValueAtY(y) {
+        return MathExtra.boundValue((root.height - y)/root.height, 0, 1);
     }
 }
