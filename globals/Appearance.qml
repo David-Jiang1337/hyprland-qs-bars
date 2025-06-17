@@ -34,7 +34,7 @@ Singleton {
 
     component Sizing: QtObject {
         readonly property int roundObject: 20
-        readonly property int sliderWidth: 16
+        readonly property int sliderWidth: 8
         readonly property int sliderRounding: 2
     }
 
