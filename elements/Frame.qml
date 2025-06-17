@@ -20,4 +20,11 @@ Rectangle {
             duration: Appearance.duration.small
         }
     }
+
+    Behavior on height {
+        ScaleAnimator {
+            easing.type: Easing.InOutQuad
+            duration: Appearance.duration.small
+        }
+    }
 }
