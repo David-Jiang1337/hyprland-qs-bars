@@ -14,14 +14,7 @@ Rectangle {
         }
     }
 
-    Behavior on width {
-        ScaleAnimator {
-            easing.type: Easing.InOutQuad
-            duration: Appearance.duration.small
-        }
-    }
-
-    Behavior on height {
+    Behavior on scale {
         ScaleAnimator {
             easing.type: Easing.InOutQuad
             duration: Appearance.duration.small
