@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import "root:/modules/bar/widgets"
 import "root:/globals"
 import "root:/elements"
+import "root:/services"
 
 
 Item {
@@ -66,7 +67,7 @@ Item {
                     bottomMargin: Appearance.spacing.small
                 }
 
-                WidgetFrame { // Clock widget
+                WidgetFrame {
                     id: clockFrame
                     implicitHeight: clock.implicitHeight
 
@@ -78,9 +79,9 @@ Item {
                 Frame {
                     readonly property int traySpacing: Appearance.spacing.small
 
-                    id: soundFrame
+                    id: tray
                     implicitWidth: barFrame.width - Appearance.padding.small * 2
-                    implicitHeight: columnTray.childrenRect.height + traySpacing * 2
+                    implicitHeight: childrenRect.height + implicitWidth
                     color: Appearance.palette.background2
                     radius: Appearance.radius.full
 
@@ -91,9 +92,23 @@ Item {
                     ColumnLayout {
                         id: columnTray
                         spacing: parent.traySpacing
-                        anchors.centerIn: parent
+                        anchors.top: parent.top
+                        anchors.topMargin: parent.implicitWidth / 2
+
+                        VerticalSlider {
+                            id: soundSlider
+                            value: MathExtra.boundValue(Audio.getVolume(), 0, 1)
+                            Layout.alignment: Qt.AlignHCenter
+                            implicitHeight: 100
+                            implicitWidth: Appearance.sizing.sliderWidth
+
+                            updateValue: (mouseY) => {
+                                Audio.setVolume(getValueAtY(mouseY))
+                            }
+                        }
 
                         WidgetFrame {
+                            id: soundButton
                             implicitWidth: sound.implicitHeight
                             implicitHeight: implicitWidth
                             Sound {
