@@ -1,6 +1,8 @@
 pragma Singleton
 
+import QtQuick
 import Quickshell
+import Quickshell.Io
 import Quickshell.Services.Pipewire
 
 Singleton {
@@ -13,19 +15,20 @@ Singleton {
     readonly property real volume: sink?.audio?.volume ?? 0
 
     function getVolume() {
-        if (sink?.ready && sink?.audio) {
-            return sink.audio.volume
-        } else {
-            return 0
-        }
+        return volume
     }
 
 
     function setVolume(volume: real): void {
-        if (sink?.ready && sink?.audio) {
-            sink.audio.muted = false;
-            sink.audio.volume = volume;
-        }
+        setVolumeProc.targetVolume = volume;
+        setVolumeProc.running = true;
+    }
+
+    Process {
+        id: setVolumeProc
+        property real targetVolume: 0
+        command: ["pactl", "set-sink-volume", "@DEFAULT_SINK@", targetVolume*100 + "%"] // this is so cursed I hate it wow
+        running: false
     }
 
     PwObjectTracker {
