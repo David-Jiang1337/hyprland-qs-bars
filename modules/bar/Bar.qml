@@ -79,7 +79,7 @@ Item {
                 Frame {
                     readonly property int traySpacing: Appearance.spacing.small
 
-                    id: tray
+                    id: soundFrame
                     implicitWidth: barFrame.width - Appearance.padding.small * 2
                     implicitHeight: childrenRect.height + implicitWidth
                     color: Appearance.palette.background2
@@ -103,14 +103,14 @@ Item {
                             implicitWidth: Appearance.sizing.sliderWidth
 
                             updateValue: (mouseY) => {
-                                Audio.setVolume(getValueAtY(mouseY))
+                                Audio.setVolume(getValueAtY(mouseY));
                             }
                         }
 
                         WidgetFrame {
                             id: soundButton
-                            implicitWidth: sound.implicitHeight
-                            implicitHeight: implicitWidth
+                            implicitWidth: Appearance.font.size.medium
+                            implicitHeight: Appearance.font.size.medium
                             Sound {
                                 id: sound
                             }
